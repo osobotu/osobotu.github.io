@@ -15,19 +15,6 @@
     </div>
   </section>
 
-  {{ with site.Params.applicationNote }}
-    <section class="application-note" aria-labelledby="phd-applications">
-      <h2 id="phd-applications">PhD applications</h2>
-      <p>{{ . }}</p>
-      <div class="application-links">
-        {{ with site.Params.cvURL }}<a href="{{ . | relURL }}">View CV</a>{{ end }}
-        {{ range where site.Params.social "name" "linkedin" }}
-          <a href="{{ .url }}" rel="me noopener noreferrer">Connect on LinkedIn</a>
-        {{ end }}
-      </div>
-    </section>
-  {{ end }}
-
   {{ $posts := where site.RegularPages "Section" "posts" }}
   {{ with first 3 $posts.ByDate.Reverse }}
     <section class="home-section" aria-labelledby="latest-writing">

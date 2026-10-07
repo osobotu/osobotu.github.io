@@ -290,32 +290,6 @@ p {
   margin-bottom: 1rem;
 }
 
-.application-note {
-  margin-top: 2.75rem;
-  padding: 1.25rem 1.5rem;
-  border-left: 5px solid var(--global-theme-color);
-  background: var(--global-code-bg-color);
-}
-
-.application-note h2 {
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
-}
-
-.application-note p {
-  margin-bottom: 0.75rem;
-}
-
-.application-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.application-links a {
-  font-weight: 500;
-}
-
 .home-section {
   margin-top: 2.75rem;
 }

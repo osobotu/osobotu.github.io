@@ -15,8 +15,6 @@ profileImage = '/avatar.webp'
 introduction = "I build learning systems for physical agents. My work focuses on how robots can extract useful information from incomplete observations, use prior knowledge to act, and adapt when their assumptions or policies fail."
 researchFocus = "Representation and adaptation for embodied agents, with an emphasis on task-relevant perception, robot learning, and learning from interaction."
 researchInterests = ['Robot learning', 'Representation learning', 'Embodied AI', 'Reinforcement learning', 'Foundation models for robotics']
-applicationNote = "I am currently applying to PhD programs in robotics and machine learning. I welcome conversations with faculty, researchers, and students working on robot learning, embodied AI, and related areas."
-# cvURL = '/cv.pdf'
 footerContent = '© Stephen Oduh'
 
 # Social icons
