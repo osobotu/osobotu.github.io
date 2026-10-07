@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <article class="article">
+    <header class="article-header">
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="article-description">{{ . }}</p>{{ end }}
+      {{ if eq .Section "posts" }}
+        <div class="article-meta">
+          <time datetime="{{ .Date.Format `2006-01-02` }}">{{ .Date.Format "January 2, 2006" }}</time>
+          {{ if .Params.readTime }}<span>{{ .ReadingTime }} min read</span>{{ end }}
+        </div>
+        {{ with .GetTerms "tags" }}
+          <ul class="tag-list" aria-label="Tags">
+            {{ range . }}<li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>{{ end }}
+          </ul>
+        {{ end }}
+      {{ end }}
+    </header>
+
+    {{ if and .Params.toc (gt (len .TableOfContents) 32) }}
+      <aside class="table-of-contents" aria-label="Table of contents">
+        <strong>Contents</strong>
+        {{ .TableOfContents }}
+      </aside>
+    {{ end }}
+
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}

@@ -1,0 +1,34 @@
+{{ define "main" }}
+  <header class="page-header">
+    <!-- <p class="eyebrow">{{ if eq .Section "posts" }}Notes and essays{{ else }}Archive{{ end }}</p> -->
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="page-description">{{ . }}</p>{{ end }}
+    {{ .Content }}
+  </header>
+
+  {{ if eq .Kind "taxonomy" }}
+    <ul class="term-list">
+      {{ range .Data.Terms.Alphabetical }}
+        <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a><span>{{ .Count }}</span></li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    {{ with .Pages.ByDate.Reverse }}
+      <ol class="article-list">
+        {{ range . }}
+          <li>
+            <article>
+              <time datetime="{{ .Date.Format `2006-01-02` }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+              <div>
+                <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                {{ with .Summary }}<p>{{ . | plainify | truncate 180 }}</p>{{ end }}
+              </div>
+            </article>
+          </li>
+        {{ end }}
+      </ol>
+    {{ else }}
+      <p class="empty-state">No published writing yet.</p>
+    {{ end }}
+  {{ end }}
+{{ end }}

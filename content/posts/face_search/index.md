@@ -1,7 +1,7 @@
 ---
 title: "Face-Search: The Beginning"
 author: "Stephen Oduh"
-authorAvatarPath: "/avatar.JPG"
+authorAvatarPath: "/avatar.webp"
 date: "2025-06-16"
 summary: "A computer vision based image search project."
 description: "A computer vision based image search project."

@@ -1,85 +1,59 @@
 baseURL = 'https://osobotu.github.io/'
-languageCode = 'en-us'
+locale = 'en-US'
 title = 'Stephen Oduh'
-theme = 'typo'
+enableRobotsTXT = true
 
 [taxonomies]
 tag = 'tags'
 
 [params]
-# Meta description
-description = "Herein lies my thoughts and scientific explorations written on the moon"
-
-
-# Appearance settings
-theme = 'auto'
-colorPalette = 'base16-ocean'
-hideHeader = true
-
-# Intro on main page, content is markdown
-homeIntroTitle = 'Hello!'
-homeIntroContent = """
-I am an ML Research Engineer with a background in Mechanical Engineering. I love solving interdisciplinary problems.
-My current research focuses on using Computer Vision techniques to model the biomechanical behaviour of residual limbs.
-"""
-
-# Collection to display on home
-# homeCollectionTitle = 'Posts'
-# homeCollection = 'posts'
-
-# Lists parameters
-paginationSize = 100
-listSummaries = true
-listDateFormat = '2 Jan 2006'
-
-# Breadcrumbs
-[params.breadcrumbs]
-enabled = true
-showCurrentPage = true
-home = "home"
+description = "Research and writing by Stephen Oduh, a robotics and machine learning researcher."
+firstName = 'Stephen'
+lastName = 'Oduh'
+role = 'Robotics & Machine Learning Researcher · Mechanical Engineer'
+profileImage = '/avatar.webp'
+introduction = "I build learning systems for physical agents. My work focuses on how robots can extract useful information from incomplete observations, use prior knowledge to act, and adapt when their assumptions or policies fail."
+researchFocus = "Representation and adaptation for embodied agents, with an emphasis on task-relevant perception, robot learning, and learning from interaction."
+researchInterests = ['Robot learning', 'Representation learning', 'Embodied AI', 'Reinforcement learning', 'Foundation models for robotics']
+applicationNote = "I am currently applying to PhD programs in robotics and machine learning. I welcome conversations with faculty, researchers, and students working on robot learning, embodied AI, and related areas."
+# cvURL = '/cv.pdf'
+footerContent = '© Stephen Oduh'
 
 # Social icons
 [[params.social]]
 name = "linkedin"
+label = "LinkedIn"
 url = "https://www.linkedin.com/in/osobotu/"
 
 [[params.social]]
-name = "twitter"
+name = "x"
+label = "X"
 url = "https://x.com/@osobotu"
 
 [[params.social]]
 name = "github"
+label = "GitHub"
 url = "https://github.com/osobotu"
 
-# Main menu pages
-# [[params.menu]]
-# name = "home"
-# url = "/"
+[[menus.main]]
+name = 'about'
+pageRef = '/'
+weight = 10
 
-[[params.menu]]
-name = "posts"
-url = "/posts"
+[[menus.main]]
+name = 'blog'
+pageRef = '/posts'
+weight = 20
 
-[[params.menu]]
-name = "publications"
-url = "/publications"
+[[menus.main]]
+name = 'publications and pre-prints'
+pageRef = '/publications'
+weight = 30
 
-[[params.menu]]
-name = "about"
-url = "/about"
+[[menus.main]]
+name = 'projects'
+pageRef = '/projects'
+weight = 40
 
-
-# Syntax highlight on code blocks
-[markup]
 [markup.highlight]
 style = 'algol'
-
-# Giscus comments
-# [params.giscus]
-# enable = false
-# repo = "user/repo"
-# repoid = "repoId"
-# category = "General"
-# categoryid = "categoryId"
-# mapping = "pathname"
-# theme = "preferred_color_scheme"

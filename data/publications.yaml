@@ -1,0 +1,13 @@
+- title: "Paper title"
+  authors: "Stephen Oduh and Coauthors"
+  venue: "ASME IDETC-CIE"
+  year: 2026
+  status: "Accepted; proceedings forthcoming"
+  selected: true
+  draft: true
+  # image: "/images/paper-preview.png"
+  # links:
+  #   - label: "Paper"
+  #     url: "https://doi.org/..."
+  #   - label: "Code"
+  #     url: "https://github.com/..."

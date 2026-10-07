@@ -1,0 +1,77 @@
+{{ define "main" }}
+  <section class="profile" aria-labelledby="profile-name">
+    <header class="profile-header">
+      <h1 id="profile-name"><strong>{{ site.Params.firstName }} </strong> {{ site.Params.lastName }}</h1>
+      <p class="profile-role">{{ site.Params.role }}</p>
+    </header>
+    {{ with site.Params.profileImage }}
+      <img class="profile-image" src="{{ . | relURL }}" alt="Portrait of {{ site.Title }}" width="280" height="280">
+    {{ end }}
+
+    <div class="profile-copy">
+      <p>{{ site.Params.introduction }}</p>
+      <p><strong>Research focus:</strong> {{ site.Params.researchFocus }}</p>
+      <p><strong>Research interests:</strong> {{ delimit site.Params.researchInterests ", " }}.</p>
+    </div>
+  </section>
+
+  {{ with site.Params.applicationNote }}
+    <section class="application-note" aria-labelledby="phd-applications">
+      <h2 id="phd-applications">PhD applications</h2>
+      <p>{{ . }}</p>
+      <div class="application-links">
+        {{ with site.Params.cvURL }}<a href="{{ . | relURL }}">View CV</a>{{ end }}
+        {{ range where site.Params.social "name" "linkedin" }}
+          <a href="{{ .url }}" rel="me noopener noreferrer">Connect on LinkedIn</a>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+  {{ with first 3 $posts.ByDate.Reverse }}
+    <section class="home-section" aria-labelledby="latest-writing">
+      <h2 id="latest-writing"><a href="{{ `posts/` | relURL }}">latest posts</a></h2>
+      <ol class="writing-list">
+        {{ range . }}
+          <li>
+            <time datetime="{{ .Date.Format `2006-01-02` }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </li>
+        {{ end }}
+      </ol>
+    </section>
+  {{ end }}
+
+  {{ with hugo.Data.publications }}
+    {{ $publications := . }}
+    {{ if hugo.IsProduction }}
+      {{ $publications = where $publications "draft" "ne" true }}
+    {{ end }}
+    {{ $selected := where $publications "selected" true }}
+    {{ with $selected }}
+      <section class="home-section" aria-labelledby="selected-publications">
+        <h2 id="selected-publications"><a href="{{ `publications/` | relURL }}">selected publications</a></h2>
+        <div class="publication-list">
+          {{ range first 4 . }}
+            {{ partial "publication.html" (dict "publication" . "compact" true) }}
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+  {{ end }}
+
+  {{ with hugo.Data.news }}
+    <section class="home-section" aria-labelledby="recent-news">
+      <h2 id="recent-news">news</h2>
+      <ol class="news-list">
+        {{ range first 5 . }}
+          <li>
+            <time datetime="{{ .date }}">{{ time.Format "Jan 2006" .date }}</time>
+            <p>{{ .text | markdownify }}</p>
+          </li>
+        {{ end }}
+      </ol>
+    </section>
+  {{ end }}
+{{ end }}

@@ -1,0 +1,19 @@
+{{ $publication := .publication }}
+<article class="publication{{ if .compact }} publication-compact{{ end }}">
+  {{ with $publication.image }}
+    <img class="publication-image" src="{{ . | relURL }}" alt="" loading="lazy">
+  {{ end }}
+  <div class="publication-details">
+    <h3>{{ $publication.title }}</h3>
+    {{ with $publication.authors }}<p class="publication-authors">{{ . }}</p>{{ end }}
+    <p class="publication-venue">
+      {{ with $publication.venue }}<em>{{ . }}</em>{{ end }}{{ with $publication.year }}{{ if $publication.venue }}, {{ end }}{{ . }}{{ end }}
+      {{ with $publication.status }}{{ if or $publication.venue $publication.year }} · {{ end }}{{ . }}{{ end }}
+    </p>
+    {{ with $publication.links }}
+      <div class="publication-links" aria-label="Links for {{ $publication.title }}">
+        {{ range . }}<a href="{{ .url }}">{{ .label }}</a>{{ end }}
+      </div>
+    {{ end }}
+  </div>
+</article>

@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="page-description">{{ . }}</p>{{ end }}
+    {{ .Content }}
+  </header>
+
+  {{ $publications := hugo.Data.publications }}
+  {{ if and $publications hugo.IsProduction }}
+    {{ $publications = where $publications "draft" "ne" true }}
+  {{ end }}
+
+  {{ with $publications }}
+    <div class="publication-list publication-list-full">
+      {{ range . }}
+        {{ partial "publication.html" (dict "publication" .) }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <p class="empty-state">Published and ongoing research will appear here.</p>
+  {{ end }}
+{{ end }}
